@@ -67,8 +67,8 @@
                                     $statement=$dbh->query($sql);
                                     ?>
                 <div id="container">
-                <div class="itembox">
                     <?php while($row=$statement->fetch()):?>
+                        <div class="itembox">
                     <div class="box-left">
                     <p><?php echo str2html($row[2])?></p>
                     <img src="<?php echo str2html($row[10])?>">
@@ -83,8 +83,8 @@
                     </form>
                     <p><?php echo str2html($row[9])?></p>
                     </div>
-                <?php endwhile;?>
                 </div>
+                <?php endwhile;?>
 
 
 
