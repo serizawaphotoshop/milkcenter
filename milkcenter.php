@@ -9,17 +9,19 @@
     <link rel="stylesheet" href="style2.css">
 </head>
 
-<body>
+<!--<body>
     <div id="header">
         <ul>
         <h1><img src="images/logo.svg"></h1>
-        <li>商品一覧</li>
+        <li><a href="management.php">管理用</a></li>
         <li>お客様ガイド</li>
         <li>会員登録</li>
         <li>よくある質問</li>
         <li>お問い合わせ</li>
         </ul>
-    </div>
+    </div> -->
+    <?php include __DIR__.'/inc/header.php';?>
+
     <div id="heroimg-wrapper">
         <div id="heroimg">
 
