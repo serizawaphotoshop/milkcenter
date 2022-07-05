@@ -29,7 +29,7 @@
     <div id="main">
         <div id="content">
             <h1>管理用ページ</h1>
-            <div id="shop">
+            <!-- <div id="shop">
                 <input type="button" value="元に戻す" class="menubtn" onclick="">
                 <input type="button" value="賞味期限順にする" class="menubtn" onclick="printExpirySort()">
                 <input type="button" value="まとめて購入" class="menubtn" onclick="">
@@ -38,7 +38,7 @@
                     <label for="check" class="toggle-label">
                 </div>
                 <p>安売りモード</p>
-            </div>
+            </div> -->
             <div id="add">
                 <form action="add.php" method="post">
                 <p>
@@ -164,7 +164,7 @@
                     <h2><?php echo str2html($row[3])?></h2>
                     <span>価格：<?php echo str2html($row[4])?>円</span>
                     <p><?php echo str2html($row[9])?></p>
-                    <p><a href="">更新</a></p>
+                    <p><a href="">編集</a></p>
                     </div>
                 </div>
                 <?php endwhile;?>

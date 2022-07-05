@@ -199,3 +199,8 @@ span{
   width: 75px;
   height: 42px;
 }
+#add{
+  background-color: lightblue;
+  text-align: center;
+  padding: 1em;
+}
