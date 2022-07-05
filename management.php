@@ -163,12 +163,8 @@
                     <div class="box-right">
                     <h2><?php echo str2html($row[3])?></h2>
                     <span>価格：<?php echo str2html($row[4])?>円</span>
-                    <form>
-                        <label for="Purchase-number">個数</label>
-                        <input type="text" class="Purchase-number" id="Purchase-number<?php echo str2html($row[0])?>" name="Purchase-number">
-                        <input class="btn" type="submit" onclick="" value="購入する">
-                    </form>
                     <p><?php echo str2html($row[9])?></p>
+                    <p><a href="">更新</a></p>
                     </div>
                 </div>
                 <?php endwhile;?>
