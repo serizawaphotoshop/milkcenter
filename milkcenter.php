@@ -9,17 +9,6 @@
     <link rel="stylesheet" href="style2.css">
 </head>
 
-<!--<body>
-    <div id="header">
-        <ul>
-        <h1><img src="images/logo.svg"></h1>
-        <li><a href="management.php">管理用</a></li>
-        <li>お客様ガイド</li>
-        <li>会員登録</li>
-        <li>よくある質問</li>
-        <li>お問い合わせ</li>
-        </ul>
-    </div> -->
     <?php include __DIR__.'/inc/header.php';?>
 
     <div id="heroimg-wrapper">
@@ -42,14 +31,15 @@
             <div>
                 <?php require_once 'functions.php';
                     try{
-                        $user="root";
-                        $password="";
-                        $opt=[
-                            PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION,
-                            PDO::ATTR_EMULATE_PREPARES=>false,
-                            PDO::MYSQL_ATTR_MULTI_STATEMENTS=>false
-                        ];
-                        $dbh=new PDO('mysql:host=localhost;dbname=milkcenter',$user,$password,$opt);
+                        // $user="root";
+                        // $password="";
+                        // $opt=[
+                        //     PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION,
+                        //     PDO::ATTR_EMULATE_PREPARES=>false,
+                        //     PDO::MYSQL_ATTR_MULTI_STATEMENTS=>false
+                        // ];
+                        // $dbh=new PDO('mysql:host=localhost;dbname=milkcenter',$user,$password,$opt);
+                        $dbh=db_open();
                         $sql="SELECT
                                         id,
                                         productId,

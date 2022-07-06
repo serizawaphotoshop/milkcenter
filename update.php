@@ -1,6 +1,13 @@
 <?php
 require_once 'functions.php';
-
+if(empty($_POST['id'])){
+    echo "IDを指定してください";
+    exit;
+}
+if(!preg_match('/\A\d{1,11}\z/u',$_POST['id'])){
+    echo "IDを正しく指定してください";
+    exit;
+}
 if(empty($_POST['productId'])){
     echo "商品IDは必須です";
     exit;
@@ -72,42 +79,37 @@ if(!checkdate($expiryDate[1],$expiryDate[2],$expiryDate[0])){
     exit;
 }
 
+// try{
+    $dbh=db_open();
+    $sql="UPDATE product set categoryId=:categoryId,productName=:productName,productPrice=:productPrice,src=:src,comment=:comment";
+
+    $stmt=$dbh->prepare($sql);
+
+    // $stmt->bindParam(":productId",$_POST['productId'],PDO::PARAM_INT);
+    $stmt->bindParam(":categoryId",$_POST['categoryId'],PDO::PARAM_INT);
+    $stmt->bindParam(":productName",$_POST['productName'],PDO::PARAM_STR);
+    $stmt->bindParam(":productPrice",$_POST['productPrice'],PDO::PARAM_INT);
+    $stmt->bindParam(":src",$_POST['src'],PDO::PARAM_STR);
+    $stmt->bindParam(":comment",$_POST['comment'],PDO::PARAM_STR);
+
+    $stmt->execute();
 
 
+    $sql2="UPDATE master set productId=:productId,updateDate=:updateDate,updateUserId=:updateUserId,stockQuantity=:stockQuantity,expiryDate=:expiryDate";
+
+    $stmt2=$dbh->prepare($sql2);
 
 
-$dbh=db_open();
+    $stmt2->bindParam(":productId",$_POST['productId'],PDO::PARAM_INT);
+    $stmt2->bindParam(":updateDate",$_POST['updateDate'],PDO::PARAM_STR);
+    $stmt2->bindParam(":updateUserId",$_POST['updateUserId'],PDO::PARAM_INT);
+    $stmt2->bindParam(":stockQuantity",$_POST['stockQuantity'],PDO::PARAM_INT);
+    $stmt2->bindParam(":expiryDate",$_POST['expiryDate'],PDO::PARAM_INT);
 
-
-
-$sql="INSERT into product (productId,categoryId,productName,productPrice,src,comment)
-values(:productId,:categoryId,:productName,:productPrice,:src,:comment)";
-
-$stmt=$dbh->prepare($sql);
-
-$stmt->bindParam(":productId",$_POST['productId'],PDO::PARAM_INT);
-$stmt->bindParam(":categoryId",$_POST['categoryId'],PDO::PARAM_INT);
-$stmt->bindParam(":productName",$_POST['productName'],PDO::PARAM_STR);
-$stmt->bindParam(":productPrice",$_POST['productPrice'],PDO::PARAM_INT);
-$stmt->bindParam(":src",$_POST['src'],PDO::PARAM_STR);
-$stmt->bindParam(":comment",$_POST['comment'],PDO::PARAM_STR);
-
-$stmt->execute();
-
-
-$sql2="INSERT into master(id,productId,updateDate,updateUserId,stockQuantity,expiryDate)
-values(null,:productId,:updateDate,:updateUserId,:stockQuantity,:expiryDate);";
-
-$stmt2=$dbh->prepare($sql2);
-
-
-$stmt2->bindParam(":productId",$_POST['productId'],PDO::PARAM_INT);
-$stmt2->bindParam(":updateDate",$_POST['updateDate'],PDO::PARAM_STR);
-$stmt2->bindParam(":updateUserId",$_POST['updateUserId'],PDO::PARAM_INT);
-$stmt2->bindParam(":stockQuantity",$_POST['stockQuantity'],PDO::PARAM_INT);
-$stmt2->bindParam(":expiryDate",$_POST['expiryDate'],PDO::PARAM_INT);
-
-$stmt2->execute();
-
-echo "データが追加されました<br>";
-echo "<a href=\"management.php\">管理用ページに戻る</a>";
+    $stmt2->execute();
+    echo "データが追加されました<br>";
+    echo "<a href=\"management.php\">管理用ページに戻る</a>";
+// }catch(PDOException $e){
+//     echo "エラー".$e->getMessage();
+//     exit;
+// }
