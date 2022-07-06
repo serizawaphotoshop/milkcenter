@@ -10,7 +10,7 @@ if(!preg_match('/\A\d{1,11}\z/u',$_GET['id'])){
 }
 
 $id=(int) $_GET['id'];
-
+// var_dump($id);
 $dbh=db_open();
 $sql="SELECT
             id,
