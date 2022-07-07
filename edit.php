@@ -66,38 +66,8 @@ $id=str2html($result['id']);
 
 $html_form=<<<EOD
 <form action="update.php" method="post">
-<p>
-    <label for='categoryId'> カテゴリID:</label>
-    <select name='categoryId'>
-        <option value="8001">牛乳</option>
-        <option value="8002">バター</option>
-        <option value="8003">ヨーグルト</option>
-    </select>
-</p>
-<p>
-    <label for='productName'> 商品名:</label>
-    <input type="text" name="productName" id="" value="$productName">
-</p>
-<p>
-    <label for='productPrice'> 価格(円):</label>
-    <input type="text" name="productPrice" id="" value="$productPrice">
-</p>
-<p>
-    <label for='src'> 商品画像:</label>
-    <select name='src'>
-        <option value="images/milk.png">牛乳</option>
-        <option value="images/butter.png">バター</option>
-        <option value="images/yorgurt.png">ヨーグルト</option>
-    </select>
-</p>
-<p>
-    <label for='comment'> コメント:</label>
-    <input type="text" name="comment" id="" value="$comment">
-</p>
-<p>
-    <label for='productID'> 商品ID（4桁、1000番台）:</label>
-    <input type="text" name="productId" id="" value="$productId">
-</p>
+<p>ID:$id</p>
+<p>商品ID：$productId</p>
 <p>
     <label for='updateDate'> 追加日(yy-mm-dd):</label>
     <input type="text" name="updateDate" id="" value="$updateDate">

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>管理用ページ</title>
+    <title>master管理用ページ</title>
     <link rel="stylesheet" href="style2.css">
 </head>
 
@@ -186,6 +186,8 @@
                     </div>
                     <div class="box-right">
                     <h2><?php echo str2html($row[3])?></h2>
+                    <span>ID：<?php echo str2html($row[0])?></span>
+                    <span>商品ID：<?php echo str2html($row[1])?></span>
                     <span>価格：<?php echo str2html($row[4])?>円</span>
                     <span>追加：<?php echo str2html($row[5])?></span>
                     <span>管理者：<?php echo str2html($row[6])?></span>
